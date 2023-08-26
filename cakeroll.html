@@ -647,6 +647,32 @@
     }
     window.addEventListener("load", updateOrder);
     window.addEventListener("resize", updateOrder);
+
+        const footerText = document.querySelector(".footer-text");
+
+// 更新字体大小函数
+function updateFontSize() {
+  if (window.innerWidth < 700) {
+    footerText.style.fontSize = "15px";
+  } else {
+    footerText.style.fontSize = "30px";
+  }
+}
+
+// 在页面加载时和窗口大小变化时调用更新函数
+window.addEventListener("load", updateFontSize);
+window.addEventListener("resize", updateFontSize);
+
+
+const footerText = document.querySelector(".footer-text2");
+
+// 更新字体大小函数
+function updateFontSize() {
+  if (window.innerWidth < 700) {
+    footerText.style.fontSize = "2px";
+  } else {
+    footerText.style.fontSize = " 15px";
+  }
   </script>
 
 
