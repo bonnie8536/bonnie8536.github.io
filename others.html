@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="/img/logo01.ico" type="image/x-icon" />
+
+    <script>
+
+        // 在頁面載入完成後執行
+        window.addEventListener('load', function () {
+            // 檢查URL是否包含錨點
+            if (window.location.hash) {
+                // 獲取目標元素的位置
+                var targetElement = document.querySelector(window.location.hash);
+                var targetPosition = targetElement.getBoundingClientRect().top;
+
+                // 調整滾動位置，向上移動100像素
+                window.scrollTo({
+                    top: targetPosition - 100,
+                    behavior: 'smooth' // 使用平滑滾動效果
+                });
+            }
+        });
+
+    </script>
+
+    <style>
+        .box {
+            background-color: rgb(255, 255, 255);
+        }
+
+        .button {
+            background-color: white;
+            padding: 30px;
+        }
+
+        .button img {
+            background-color: white;
+        }
+
+        .header-container {
+            position: sticky;
+            top: -215px;
+            width: 100%;
+            background-color: white;
+            z-index: 9999;
+            transition: height 0.3s ease-in-out;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background-color: white;
+
+
+
+        }
+
+        #images2.carousel {
+            overflow: hidden;
+        }
+
+        .nav-divider {
+            border-left: 1px solid rgba(192, 192, 192, 0.623);
+            margin-left: 20px;
+            height: 25px;
+            margin-top: 8px;
+
+        }
+
+
+        .navbar-nav .nav-link {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        #carouselExample {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #carouselExample .carousel-inner {
+            text-align: center;
+        }
+
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(100%);
+        }
+
+
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+
+        .image-container {
+            position: relative;
+
+        }
+
+        .image-container img {
+            transition: transform 0.3s, opacity 1s;
+            transform-origin: center center;
+        }
+
+        .image-container:hover img {
+            animation: fadeInOut 0.5s;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 1;
+            }
+
+            20% {
+                opacity: 0.9;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+        
+    .navbar-collapse {
+      position: fixed;
+      top: 0%;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #ffffff;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+    }
+
+    .navbar-collapse.show {
+      left: 0;
+    }
+
+    .navbar-nav {
+      margin-left: 15px;
+    }
+
+    .navbar-nav .show .nav-link {
+      color: white;
+    }
+
+    .pic {
+      overflow: hidden;
+    }
+
+    .pic img {
+      transform: scale(1, 1);
+      transition: all 1s ease-out;
+    }
+
+    .pic img:hover {
+      transform: scale(1.3, 1.3);
+    }
+
+    .custom-height {
+      height: 80%;
+    }
+
+    @media (min-width: 992px) {
+      .navbar-collapse {
+        position: static;
+        width: auto;
+      }
+      .custom-height {
+        height: 60%;
+      }
+    }
+
+    @media (max-width:576px) {
+      .custom-height {
+        height: 40%;
+      }
+    }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="header-container">
+        <div style="background-color: rgb(232, 196, 134); height: 50px;"></div>
+
+        <a href="index.html" id="pic" style="margin-top: 50px; ">
+            <img class="d-block mx-auto" src="img/img01.png" alt=""
+                style="width:300px; margin-top: 30px; background-color: white;">
+        </a>
+
+        <div style="background-color: rgb(255, 255, 255); height: 30px;"></div>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首頁 Home</a>
+                    </li>
+                    <li class="nav-divider"></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="gold_moon_cake.html" id="moonCakeDropdown"
+                            role="button" aria-expanded="false">
+                            蛋黃酥系列 Moon Cake
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="moonCakeDropdown">
+
+                            <li><a class="dropdown-item list-item " href="gold_moon_cake.html#moon1">黃金蛋黃酥</a></li>
+                            <li><a class="dropdown-item list-item" href="gold_moon_cake.html#moon2">抹茶紅豆麻糬酥</a></li>
+                            <li><a class="dropdown-item list-item" href="gold_moon_cake.html#moon3">芋頭千層酥</a></li>
+                            <li><a class="dropdown-item list-item" href="gold_moon_cake.html#moon4">月兔造型月娘酥</a></li>
+                            <li><a class="dropdown-item list-item" href="gold_moon_cake.html#moon5">柴犬造型酥</a></li>
+                            <li><a class="dropdown-item list-item" href="gold_moon_cake.html#moon6">彩虹千層酥</a></li>
+                            <li><a class="dropdown-item list-item" href="gold_moon_cake.html#moon7">綠豆月娘酥</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-divider"></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="cake.html" id="cakeDropdown" role="button"
+                            aria-expanded="false">
+                            蛋糕系列 Cake
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="cakeDropdown" id="cakeDropdownMenu">
+
+                            <li><a class="dropdown-item list-item" href="cake.html#cake8" id="myLink8">提拉米蘇</a></li>
+                            <li><a class="dropdown-item list-item" href="cake.html#cake9">草莓奶油寶盒</a></li>
+                            <li><a class="dropdown-item list-item" href="cake.html#cake10">千層蛋糕</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-divider"></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="cheeese.html" id="cheesecakeDropdown" role="button"
+                            aria-expanded="false">
+                            起司系列 Cheese Cake
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="cheesecakeDropdown" id="cheesecakeDropdownMenu">
+                            <li><a class="dropdown-item list-item" href="cheeese.html#ch1">巴斯克乳酪蛋糕</a></li>
+                            <li><a class="dropdown-item list-item" href="cheeese.html#ch2">芒果生乳酪蛋糕</a></li>
+                            <li><a class="dropdown-item list-item" href="cheeese.html#ch3">OREO巧克力生乳酪蛋糕</a></li>
+                            <li><a class="dropdown-item list-item" href="cheeese.html#ch4">生銅莓果乳酪杯</a></li>
+                            <li><a class="dropdown-item list-item" href="cheeese.html#ch5">水果慕斯杯</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-divider"></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="cakeroll.html" id="cakerollDropdown" role="button"
+                            aria-expanded="false">
+                            蛋糕卷 Cake Roll
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="cakerollDropdown" id="cakerollDropdownMenu">
+                            <li><a class="dropdown-item list-item" href="cakeroll.html#cr1">草莓蛋糕卷</a></li>
+                            <li><a class="dropdown-item list-item" href="cakeroll.html#cr2">巧克力夢龍卷</a></li>
+                            <li><a class="dropdown-item list-item" href="cakeroll.html#cr3">蜂蜜地瓜蛋糕捲</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="nav-divider"></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="others.html" id="othersDropdown" role="button"
+                            aria-expanded="false">
+                            其他小品 Others
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="othersDropdown" id="othersDropdownMenu">
+                            <li><a class="dropdown-item list-item" href="others.html#ot1" id="myLink1">海鹽焦糖核桃溫蛋糕</a></li>
+                            <li><a class="dropdown-item list-item" href="others.html#ot2" id="myLink2">奶酪</a></li>
+                            <li><a class="dropdown-item list-item" href="others.html#ot3" id="myLink3">草莓大福</a></li>
+                            <li><a class="dropdown-item list-item" href="others.html#ot4" id="myLink4">蛋塔</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+     <!--------第1個-->
+  <div style="background-color: rgb(255, 255, 255); height: auto;">
+    <div id="ot1" class="container  my-5" style="background-color: rgb(255, 255, 255); height: auto;">
+      <div class="row   row-cols-1  row-cols-lg-2">
+
+
+        <div class="col">
+          <div class="card h-100 " style="background-color: rgb(255, 255, 255); border: 0px; ">
+            <div class="text-center pic my-2">
+              <img class="card- m-1 " src="img/warmcake.jpg" style="width:90%; border:0px;">
+            </div>
+          </div>
+        </div>
+
+        <div class="col px-0  d-flex justify-content-center mt-3" style="align-items: center;">
+          <div style=" display: flex; justify-content: center; align-items: center;">
+            <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+              <p class=" text-center text-align fs-1" style="font-weight: bold; color: rgb(232, 196, 134); ">
+                海鹽焦糖核桃溫蛋糕</p>
+              <p class="text-center text-align fs-6" style="color: rgb(0, 0, 0)">      黑糖磅蛋糕內藏香脆焦糖核桃，上頭鋪著慢熬肉桂蘋果<br>是如同王室威嚴又溫文儒雅的溫蛋糕</p>
+              <div
+                style="border: 2px solid rgb(232, 196, 134);width: 80%; display: flex; align-items: center; justify-content: center; margin-top:5%;">
+                <p class="text-center fs-4" style="margin:5%; font-weight: bold; color: rgb(232, 196, 134); ">超級猛
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!--------第2個-->
+  <div class="p-3 " style="background-color:  rgb(246, 244, 243); height: auto;">
+    <div id="ot2" class="container  my-5" style="background-color: rgb(246, 244, 243); height: auto;">
+        <div class="row   row-cols-1  row-cols-lg-2">
+  
+  
+          <div class="col" style="order: 2;">
+            <div class="card h-100 " style="background-color: rgb(246, 244, 243); border: 0px; ">
+              <div id="carouselExample" class="carousel slide text-center " data-bs-ride="carousel"
+                style="width:90%; overflow: hidden;">
+                <div class="carousel-inner">
+                  <div class="carousel-item active  pic">
+                    <img src="img/milk.jpg" alt="Slide 1" style="width:90%; object-fit: cover; margin: 0 auto;">
+                  </div>
+                  <div class="carousel-item  pic">
+                    <img src="img/milk (3).jpg" alt="Slide 2" style="width:90%; object-fit: cover; margin: 0 auto;">
+                  </div>
+                  <div class="carousel-item  pic">
+                    <img src="img/milk (2).jpg" alt="Slide 2" style="width:90%; object-fit: cover; margin: 0 auto;">
+                  </div>
+                  
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        <div id="col2" class="col px-0  d-flex justify-content-center mt-3" style="align-items: center; order: 1;">
+          <div style=" display: flex; justify-content: center; align-items: center;">
+            <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+              <p class=" text-center text-align fs-1" style="font-weight: bold; color: rgb(200, 124, 123); ">
+                奶酪</p>   <p class="fs-5 text-center text-align" style="color:  rgb(200, 124, 123); margin-top: 
+                -15px; font-weight: bold">原味/草莓/芒果/黑糖</p>
+              <p class="text-center text-align fs-6" style="color: rgb(0, 0, 0)">濃郁的義式鮮奶酪，在舌尖上緩緩化開，享用完仍口齒留香</p>
+              </p>
+              <div
+                style="border: 2px solid rgb(200, 124, 123);width: 80%; display: flex; align-items: center; justify-content: center; margin-top:5%;">
+                <p class="text-center fs-4" style="margin:5%; font-weight: bold; color: rgb(200, 124, 123); ">超好吃
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+ <!--------第3個-->
+ <div style="background-color: rgb(255, 255, 255); height: auto;">
+    <div id="ot3" class="container  my-5" style="background-color: rgb(255, 255, 255); height: auto;">
+      <div class="row   row-cols-1  row-cols-lg-2">
+
+
+        <div class="col">
+          <div class="card h-100 " style="background-color: rgb(255, 255, 255); border: 0px; ">
+            <div class="text-center pic my-2">
+              <img class="card- m-1 " src="img/bigfu.jpg" style="width:90%; border:0px;">
+            </div>
+          </div>
+        </div>
+
+        <div class="col px-0  d-flex justify-content-center mt-3" style="align-items: center;">
+          <div style=" display: flex; justify-content: center; align-items: center;">
+            <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+              <p class=" text-center text-align fs-1" style="font-weight: bold; color: rgb(232, 196, 134); ">
+                草莓大福</p>
+              <p class="text-center text-align fs-6" style="color: rgb(0, 0, 0)"> 手打糯米外皮薄又不黏牙，低糖紅豆餡與大湖一號草莓<br>更加成就了這看似樸實，卻韜光養晦的大福</p>
+              <div
+                style="border: 2px solid rgb(232, 196, 134);width: 80%; display: flex; align-items: center; justify-content: center; margin-top:5%;">
+                <p class="text-center fs-4" style="margin:5%; font-weight: bold; color: rgb(232, 196, 134); ">很好吃但很累
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!--------第4個-->
+  <div class="p-3 " style="background-color:  rgb(246, 244, 243); height: auto;">
+    <div id="ot4" class="container  my-5" style="background: rgb(246, 244, 243); height: auto;">
+      <div class="row   row-cols-1  row-cols-lg-2">
+
+
+        <div id="col1" class="col " style="order: 2;">
+          <div class="card h-100 " style="background: rgb(246, 244, 243); border: 0px; ">
+            <div class="text-center pic my-2">
+              <img class="card- m-1 " src="img/egg.jpg" style="width:90%; border:0px;">
+            </div>
+          </div>
+        </div>
+
+        <div id="col4" class="col px-0  d-flex justify-content-center mt-3" style="align-items: center; order: 1;">
+          <div style=" display: flex; justify-content: center; align-items: center;">
+            <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+              <p class=" text-center text-align fs-1" style="font-weight: bold; color: rgb(200, 124, 123); ">
+                蛋塔</p>
+              <p class="text-center text-align fs-6" style="color: rgb(0, 0, 0)"> 手桿千層酥皮與調配置完美比例的內餡，酥脆可口</p>
+              </p>
+              <div
+                style="border: 2px solid rgb(200, 124, 123);width: 80%; display: flex; align-items: center; justify-content: center; margin-top:5%;">
+                <p class="text-center fs-4" style="margin:5%; font-weight: bold; color: rgb(200, 124, 123); "> 好喜歡酥皮
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+    <div class=""
+        style="height: 200px; background-color: rgb(232, 196, 134); display: flex; justify-content: center; align-items: center;">
+        <div style=" justify-content: center; align-items: center;" class="image-container">
+            <p class="text-center fs-6" style="color: white;">訂購商品LINE官網：</p>
+            <a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=606hrrdb" target="_blank">
+                <img src="img/qr.PNG" alt="" style="height: 125px; margin-top: -10px;">
+            </a>
+        </div>
+        <p class="text-center fs-2" style="color: rgb(255, 255, 255); margin-left: 20px;  margin-top: 10px;">
+            讓你吃得安心、放心的美味手作
+        </p>
+    </div>
+    <script>
+        window.addEventListener("load", function () {
+            fadeInEffect();
+        });
+
+        function fadeInEffect() {
+            var fadeTarget = document.body;
+            fadeTarget.style.opacity = 0;
+
+            var fadeEffect = setInterval(function () {
+                if (fadeTarget.style.opacity < 1) {
+                    fadeTarget.style.opacity = parseFloat(fadeTarget.style.opacity) + 0.1;
+                } else {
+                    clearInterval(fadeEffect);
+                }
+            }, 50);
+        }
+    </script>
+
+    <script>
+        // 激活轮播组件
+        var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'), {
+            interval: 500, // 图片自动切换的时间间隔，单位为毫秒
+            wrap: true, // 是否循环播放
+        });
+    </script>
+
+
+
+    <script>
+        document.getElementById("myLink").addEventListener("click", function (event) {
+            event.preventDefault(); // 防止預設的連結行為發生
+            fadeOutEffect();
+        });
+
+        function fadeOutEffect() {
+            var fadeTarget = document.body;
+            fadeTarget.style.opacity = 1;
+
+            var fadeEffect = setInterval(function () {
+                if (!fadeTarget.style.opacity) {
+                    fadeTarget.style.opacity = 1;
+                }
+                if (fadeTarget.style.opacity > 0) {
+                    fadeTarget.style.opacity -= 0.1;
+                } else {
+                    clearInterval(fadeEffect);
+                    window.location.href = "index.html"; // 導向到 "index.html" 頁面
+                }
+            }, 50);
+        }
+    </script>
+
+
+
+
+    <script>
+        window.addEventListener('scroll', function () {
+            var headerImage = document.getElementById('header-image');
+            var scrollDistance = window.pageYOffset || document.documentElement.scrollTop;
+            var fadeOutThreshold = 200; // 超過200px後圖片開始淡出
+
+            if (scrollDistance > fadeOutThreshold) {
+                headerImage.style.opacity = '0';
+            } else {
+                headerImage.style.opacity = '1';
+            }
+        });
+
+
+    </script>
+
+<!-- 點擊開啟選單 -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var dropdownItems = document.querySelectorAll(".nav-item.dropdown");
+  
+      dropdownItems.forEach(function (item) {
+        var dropdownToggle = item.querySelector(".dropdown-toggle");
+        var dropdownMenu = item.querySelector(".dropdown-menu");
+  
+        dropdownToggle.addEventListener("click", function (event) {
+          event.preventDefault();
+          toggleDropdownMenu();
+        });
+        function toggleDropdownMenu() {
+          if (dropdownMenu.style.display === "block") {
+            dropdownMenu.style.display = "none";
+          } else {
+            dropdownMenu.style.display = "block";
+          }
+        }
+      });
+    });
+  </script>
+  
+  <!-- 關閉列表 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var navbar = document.querySelector('.navbar');
+      document.addEventListener('click', function (event) {
+        if (!navbar.contains(event.target)) {
+          closeNavbarDropdown();
+        }
+      });
+      function closeNavbarDropdown() {
+        var dropdowns = document.querySelectorAll('.navbar-collapse.show');
+        dropdowns.forEach(function (dropdown) {
+          dropdown.classList.remove('show');
+        });
+      }
+    });
+  
+  </script>
+
+
+    <!------一堆索引標籤------>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 获取黄金蛋黄酥下拉项
+            var moonCakeDropdownItem = document.getElementById("myLink1");
+
+            // 为下拉项添加点击事件监听器
+            moonCakeDropdownItem.addEventListener("click", function (event) {
+                event.preventDefault(); // 阻止默认链接行为
+                var targetElement = document.getElementById("ot1"); // 假设 "goldMoonCakeSection" 是您想要滚动到的部分的 ID
+                var offset = targetElement.offsetTop - 100; // 根据需要调整偏移量
+                window.scrollTo({
+                    top: offset,
+                    behavior: "smooth" // 添加平滑滚动效果
+                });
+            });
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 获取黄金蛋黄酥下拉项
+            var moonCakeDropdownItem = document.getElementById("myLink2");
+
+            // 为下拉项添加点击事件监听器
+            moonCakeDropdownItem.addEventListener("click", function (event) {
+                event.preventDefault(); // 阻止默认链接行为
+                var targetElement = document.getElementById("ot2"); // 假设 "goldMoonCakeSection" 是您想要滚动到的部分的 ID
+                var offset = targetElement.offsetTop - 100; // 根据需要调整偏移量
+                window.scrollTo({
+                    top: offset,
+                    behavior: "smooth" // 添加平滑滚动效果
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 获取黄金蛋黄酥下拉项
+            var moonCakeDropdownItem = document.getElementById("myLink3");
+
+            // 为下拉项添加点击事件监听器
+            moonCakeDropdownItem.addEventListener("click", function (event) {
+                event.preventDefault(); // 阻止默认链接行为
+                var targetElement = document.getElementById("ot3"); // 假设 "goldMoonCakeSection" 是您想要滚动到的部分的 ID
+                var offset = targetElement.offsetTop - 100; // 根据需要调整偏移量
+                window.scrollTo({
+                    top: offset,
+                    behavior: "smooth" // 添加平滑滚动效果
+                });
+            });
+        });
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var listItems = document.querySelectorAll(".list-item");
+      var navbarCollapse = document.querySelector(".navbar-collapse");
+
+      listItems.forEach(function (item) {
+        item.addEventListener("click", function () {
+          // 关闭导航栏下拉列表
+          navbarCollapse.classList.remove("show");
+        });
+      });
+    });
+
+  </script>
+
+<script>
+    const col2 = document.getElementById("col2");
+    function updateOrder() {
+      if (window.innerWidth < 992) {
+        col2.style.order = 2;
+      } else {
+        col2.style.order = 1;
+      }
+    }
+    window.addEventListener("load", updateOrder);
+    window.addEventListener("resize", updateOrder);
+  </script>
+
+
+  <script>
+    const col4 = document.getElementById("col4");
+    function updateOrder() {
+      if (window.innerWidth < 992) {
+        col4.style.order = 2;
+      } else {
+        col4.style.order = 1;
+      }
+    }
+    window.addEventListener("load", updateOrder);
+    window.addEventListener("resize", updateOrder);
+  </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
