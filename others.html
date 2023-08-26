@@ -172,20 +172,36 @@
       height: 80%;
     }
 
+     .footer-text {
+    font-size: 30px; /* 原始的字體大小 */
+  }
+  .footer-text2 {
+      font-size: 15px;
+    }
+
     @media (min-width: 992px) {
       .navbar-collapse {
         position: static;
         width: auto;
       }
+
       .custom-height {
         height: 60%;
       }
-    }
+      
+}
 
     @media (max-width:576px) {
       .custom-height {
         height: 40%;
       }
+      .footer-text {
+      font-size: 12px; /* 在小於576px的螢幕寬度下，修改字體大小為6px */
+    }
+
+    .footer-text2 {
+      font-size: 2px; /* 在小於576px的螢幕寬度下，修改字體大小為6px */
+    }
     }
     </style>
 
