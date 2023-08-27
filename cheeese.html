@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHIU'S HANDMADES_CHEESE</title>
-  <link rel="icon" href="img/logo01.ico" type="image/x-icon" />
+  <title>Document</title>
+  <link rel="icon" href="/img/logo01.ico" type="image/x-icon" />
 
   <script>
 
@@ -162,8 +162,7 @@
     .custom-height {
       height: 80%;
     }
-
-       .footer-text {
+    .footer-text {
     font-size: 30px; /* 原始的字體大小 */
   }
   .footer-text2 {
@@ -259,11 +258,11 @@
               起司系列 Cheese Cake
             </a>
             <ul class="dropdown-menu" aria-labelledby="cheesecakeDropdown" id="cheesecakeDropdownMenu">
-              <li><a class="dropdown-item list-item" href="cheeese.html#ch1" id="myLink1">巴斯克乳酪蛋糕</a></li>
-              <li><a class="dropdown-item list-item" href="cheeese.html#ch2" id="myLink2">芒果生乳酪蛋糕</a></li>
-              <li><a class="dropdown-item list-item" href="cheeese.html#ch3" id="myLink3">OREO巧克力生乳酪蛋糕</a></li>
-              <li><a class="dropdown-item list-item" href="cheeese.html#ch4" id="myLink4">生銅莓果乳酪杯</a></li>
-              <li><a class="dropdown-item list-item" href="cheeese.html#ch5" id="myLink5">水果慕斯杯</a></li>
+              <li><a class="dropdown-item list-item" href="cheeese.html#ch1" id="myLink1"  onclick="closeDropdownMenu()">巴斯克乳酪蛋糕</a></li>
+              <li><a class="dropdown-item list-item" href="cheeese.html#ch2" id="myLink2"  onclick="closeDropdownMenu()">芒果生乳酪蛋糕</a></li>
+              <li><a class="dropdown-item list-item" href="cheeese.html#ch3" id="myLink3"  onclick="closeDropdownMenu()">OREO巧克力生乳酪蛋糕</a></li>
+              <li><a class="dropdown-item list-item" href="cheeese.html#ch4" id="myLink4"  onclick="closeDropdownMenu()">生銅莓果乳酪杯</a></li>
+              <li><a class="dropdown-item list-item" href="cheeese.html#ch5" id="myLink5"  onclick="closeDropdownMenu()">水果慕斯杯</a></li>
             </ul>
           </li>
           <li class="nav-divider"></li>
@@ -506,7 +505,8 @@
 
 
 
-   <div class=""
+ 
+  <div class=""
     style="height: 200px; background-color: rgb(232, 196, 134); display: flex; justify-content: center; align-items: center;">
     <div style=" justify-content: center; align-items: center;" class="image-container">
       <p class="text-center footer-text2" style="color: white;">訂購商品LINE官網：</p>
@@ -590,8 +590,8 @@
   </script>
 
 
-  <!-- 點擊開啟選單 -->
-  <script>
+   <!-- 點擊開啟選單 新 只能開一個菜單 -->
+   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var dropdownItems = document.querySelectorAll(".nav-item.dropdown");
 
@@ -601,18 +601,36 @@
 
         dropdownToggle.addEventListener("click", function (event) {
           event.preventDefault();
-          toggleDropdownMenu();
+          toggleDropdownMenu(dropdownMenu);
         });
-        function toggleDropdownMenu() {
-          if (dropdownMenu.style.display === "block") {
-            dropdownMenu.style.display = "none";
+
+        function toggleDropdownMenu(menuToToggle) {
+          // 先隐藏所有菜单
+          dropdownItems.forEach(function (item) {
+            var menu = item.querySelector(".dropdown-menu");
+            if (menu !== menuToToggle) {
+              menu.style.display = "none";
+            }
+          });
+
+          if (menuToToggle.style.display === "block") {
+            menuToToggle.style.display = "none";
           } else {
-            dropdownMenu.style.display = "block";
+            menuToToggle.style.display = "block";
           }
         }
       });
     });
   </script>
+
+  <script>
+    function closeDropdownMenu() {
+      document.querySelectorAll(".dropdown-menu").forEach(function (menu) {
+        menu.style.display = "none";
+      });
+    }
+  </script>
+
 
   <!-- 關閉列表 -->
   <script>
@@ -766,35 +784,40 @@
     }
     window.addEventListener("load", updateOrder);
     window.addEventListener("resize", updateOrder);
-
-      const footerText = document.querySelector(".footer-text");
-
-// 更新字体大小函数
-function updateFontSize() {
-  if (window.innerWidth < 700) {
-    footerText.style.fontSize = "18px";
-  } else {
-    footerText.style.fontSize = "30px";
-  }
-}
-
-// 在页面加载时和窗口大小变化时调用更新函数
-window.addEventListener("load", updateFontSize);
-window.addEventListener("resize", updateFontSize);
-
-
-const footerText = document.querySelector(".footer-text2");
-
-// 更新字体大小函数
-function updateFontSize() {
-  if (window.innerWidth < 700) {
-    footerText.style.fontSize = "12px";
-  } else {
-    footerText.style.fontSize = " 15px";
-  }
   </script>
 
-
+<script>
+  const footerText = document.querySelector(".footer-text");
+  
+  // 更新字体大小函数
+  function updateFontSize() {
+    if (window.innerWidth < 700) {
+      footerText.style.fontSize = "18px";
+    } else {
+      footerText.style.fontSize = "30px";
+    }
+  }
+  
+  // 在页面加载时和窗口大小变化时调用更新函数
+  window.addEventListener("load", updateFontSize);
+  window.addEventListener("resize", updateFontSize);
+  
+  
+  const footerText = document.querySelector(".footer-text2");
+  
+  // 更新字体大小函数
+  function updateFontSize() {
+    if (window.innerWidth < 700) {
+      footerText.style.fontSize = "12px";
+    } else {
+      footerText.style.fontSize = " 15px";
+    }
+  }
+  
+  // 在页面加载时和窗口大小变化时调用更新函数
+  window.addEventListener("load", updateFontSize);
+  window.addEventListener("resize", updateFontSize);
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
